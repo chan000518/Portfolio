@@ -15,8 +15,8 @@ body {
 }
 
 .container {
-    width: calc(100% - 40px);
-    height: calc(100% - 40px); 
+    width: calc(100vw - 40px);
+    height: calc(100vh - 40px);
     position: absolute;
     top: 50%;
     left: 50%;
@@ -27,9 +27,9 @@ body {
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
+
 .left {
     width: 35%;
-    min-width: 350px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -58,7 +58,7 @@ body {
 
 .profile-photo {
     border-radius: 50%;
-    border: solid #AF8F6F 20px;
+    border: solid #AF8F6F 10px;
     width: 300px;
     height: 300px;
     object-fit: cover;
@@ -86,24 +86,28 @@ body {
     justify-content: space-around;
 }
 
-.right::before {
-    content: '\f053';
-    font-family: 'Font Awesome 5 Free';
-    font-weight: 900;
-    position: relative;
-    left: 35px;
-    top: 50%;
-    transform: translateY(-50%);
-}
 
-.right::after {
-    content: '\f054';
-    font-family: 'Font Awesome 5 Free';
-    font-weight: 900;
-    position: absolute;
-    right: 35px;
-    top: 50%;
-    transform: translateY(-50%);
+@media (max-width: 1000px){
+
+    body{
+        font-size: 12px;
+    }
+
+    .container{
+        flex-direction: row;
+        flex-wrap: wrap;
+        overflow: auto;
+    } 
+
+    .left, .right{
+        width: 100%;
+        height: calc(100vh - 100px);
+    }
+    
+    .profile-photo {
+        width: 200px;
+        height: 200px;
+    }    
 }
 
 .right > section:last-child{
@@ -168,10 +172,6 @@ body.dark-mode .right section {
     background-color: #555;
 }
 
-body.dark-mode .profile-photo {
-    border: solid #af8f6f 20px;
-}
-
 body.dark-mode .skill-bar {
     background-color: white;
 }
@@ -181,3 +181,19 @@ body.dark-mode .skill-level {
 }
 
 
+/* 커서 모양 */
+.right {
+	cursor: none;
+}
+
+.icon-container {
+    position: fixed;
+    pointer-events: none;
+    z-index: 1000;
+    font-size: 50px;
+    color: #AF8F6F;
+}
+
+body.dark-mode .icon-container{
+    color: black;
+}
